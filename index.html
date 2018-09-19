@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styles.css">
+
+
+</head>
+
+<body>
+    <p>*ПСИ - поверяемое средство измерения</p>
+    <p>*ОСИ - образцовое средство измерения</p>
+    <div class="all">
+            <div class="result">
+                <div class="cont_res">
+                        <p class="viewEl">1)Точка по шкале   2)Расчетное значение</p>
+                </div>
+                  
+                </div>
+                <div class="form">
+        <form action="#">
+            <label for="maxPSI" >Предел ПСИ</label>
+            <input type="text" name="maxPSI" id="maxPSI" placeholder="500 или с трансформатором 800/5" autofocus >
+            <label for="classPSI" >Класс точности ПСИ</label>
+            <input type="text" name="classPSI" id="classPSI" placeholder="2.5" >
+            <label for="point">Точки для расчета(через запятую, дробные точкой отделяются)</label>
+            <input type="text" name="point" id="point" placeholder="0,100,200,300,400,500" >
+            <label for="numDelOSI">Колличество делений ОСИ</label>
+            <input type="text" name="numDelOSI" id="numDelOSI" placeholder="150" list="l" >
+            <datalist id="l">
+                    <option value="100">100</option>
+                    <option value="150">150</option>
+            </datalist>        
+
+            <label for="maxOSI">Предел ОСИ</label>
+            <input type="text" name="maxOSI" id="maxOSI" placeholder="600">
+
+            
+            <input type="button" value="Рассчитать" class="go">
+        </form>
+    </div>
+
+           
+    </div>
+ 
+    <script src="main.js"></script>
+</body>
+
+</html>

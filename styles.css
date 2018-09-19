@@ -6,8 +6,8 @@
     width: 80%;
   }
   body .all .result {
-    width: 98%;
-    left: 0;
+    width: 95%;
+    left: 2%;
   }
   body .result .close{
     left: 90%;
@@ -44,7 +44,7 @@
   }
  
   body .result .close{
-    left: 80%;
+    left: 85%;
   }
 }
 
@@ -86,9 +86,11 @@ body {
   font-family: serif;
   background: rgb(44, 57, 82);
   overflow-x: hidden;
+ }
 
-}
-
+ button{
+   cursor: pointer;
+ }
 body p {
   color: rgba(253, 253, 253, 0.801);
   margin: 15px;
@@ -187,6 +189,7 @@ label {
   background: transparent;
   border:none;
   -webkit-transition: all 0.6s cubic-bezier(0.5, 0.6, 0.1, 1.1);
+  -webkit-transition: all 0.3s cubic-bezier(0.5, 0.6, 0.1, 1.1);
   transition: all 0.3s cubic-bezier(0.5, 0.6, 0.1, 1.1);
   left: 91%;
   top: 20px;
@@ -200,7 +203,8 @@ label {
   font-size: 35px;
   font-weight: normal;
   display: block;
-  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
   -webkit-transition: all 0.3s cubic-bezier(0.5, 0.6, 0.1, 1.1);
   transition: all 0.3s cubic-bezier(0.5, 0.6, 0.1, 1.1);
   
@@ -212,7 +216,8 @@ label {
 }
 .close:hover span{
   text-shadow: 0px 0px 15px  #a8a8a8;
-  transform: rotate(225deg);
+  -webkit-transform: rotate(225deg);
+          transform: rotate(225deg);
 }
 .cont_res {
   width: 90%;

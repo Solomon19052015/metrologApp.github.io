@@ -37,7 +37,7 @@ function clickHeandlerGo() {
   let arPoint = stringInNumber(point);
   //Рассчет точек
   delRes = calculationPoint(arPoint, kolOSI, maxPsiDelNumber);
-  console.log(delRes);
+  
    //Рассчет погрешности
   errorPoint = (classPSI * kolOSI) / 100;
     //Валидация
@@ -161,6 +161,9 @@ function forEventClose(){
 function showDelete(el,el2){
   el.classList.add("showH2");
   el2.classList.add("allShow");
+  setTimeout(()=>{
+    windowHello.remove();
+  },500)
 }
  
 function show(el){

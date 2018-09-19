@@ -86,8 +86,7 @@ body {
   font-family: serif;
   background: rgb(44, 57, 82);
   overflow-x: hidden;
-  min-width: 320px;
-  height: auto;
+
 }
 
 body p {

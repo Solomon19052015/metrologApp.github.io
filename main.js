@@ -1,11 +1,16 @@
-let kolOSI, errorPoint, maxPSI, classPSI, point, numDelOSI, maxOSI, allInput;
+window.onload = function(){
+let kolOSI, errorPoint, maxPSI, classPSI, point, numDelOSI, maxOSI, allInput,status;
 let delRes = [];
 let go = document.querySelector(".go");
 let windowResult = document.querySelector(".result");
 let cont_res = document.querySelector(".cont_res");
 let viewEl = document.querySelector(".viewEl");
-
+let windowHello = document.querySelector(".winHello");
+let all = document.querySelector(".all");
+let close = document.querySelector(".close");
 go.addEventListener("click", clickHeandlerGo);
+close.addEventListener("click", clickHeandlerClose);
+window.addEventListener("keydown", keyHandlerClose);
 
 function clickHeandlerGo() {
   maxPSI = document.querySelector("#maxPSI").value;
@@ -15,9 +20,7 @@ function clickHeandlerGo() {
   maxOSI = Number(document.querySelector("#maxOSI").value);
   allInput = document.getElementsByTagName("input");
 
- 
-
-  //Разделение ПСИ
+   //Разделение ПСИ
   let maxPsiDelNumber = maxPsiDel(maxPSI);
   let maxPsiDelNumber2 = 0;
 
@@ -27,22 +30,25 @@ function clickHeandlerGo() {
   } else {
     maxPsiDelNumber2 = maxPsiDelNumber;
   }
+
   //Рассчет используемых делений
   kolOSI = (maxPsiDelNumber2 * numDelOSI) / maxOSI;
   //Преобразование рассчетных точек в числа
   let arPoint = stringInNumber(point);
   //Рассчет точек
   delRes = calculationPoint(arPoint, kolOSI, maxPsiDelNumber);
+  console.log(delRes);
    //Рассчет погрешности
   errorPoint = (classPSI * kolOSI) / 100;
     //Валидация
     status = validation(allInput,delRes);
-  
+    
   //Вывод в окно результата
   view(arPoint, delRes, errorPoint, kolOSI, status);
   windowResult.style.transform = "translateX(0%)";
  
 }
+
 
 //Массив точек
 function stringInNumber(st) {
@@ -65,18 +71,19 @@ function maxPsiDel(st) {
 //Рассчет точек
 function calculationPoint(ar, a, b) {
   let per;
+  let array =[];
   for (let i = 0; i < ar.length; i++) {
     ar[i] = Number(ar[i]);
     per = (a * ar[i]) / b;
-    delRes.push(per);
-  }
-  return delRes;
+    array.push(per);
+   }
+   return array;
 }
 
 //Создание элементов и вывод на экран
 function view(arString, arResult, er, kolDel, stat) {
   if (stat === "true" || stat === true) {
-   
+    viewEl.style.display = "block";
     for (let i = 0; i < arString.length; i++) {
       let createEl = document.createElement("p");
       cont_res.appendChild(createEl);
@@ -90,11 +97,14 @@ function view(arString, arResult, er, kolDel, stat) {
     let createEl2 = document.createElement("p");
     cont_res.appendChild(createEl2);
     createEl2.innerHTML = "Рабочее колличество делений ОСИ : " + kolDel;
-  } else {
+ 
+  } 
+  else {
     let createEl3 = document.createElement("p");
     cont_res.appendChild(createEl3);
     viewEl.style.display = "none";
     createEl3.innerHTML = "Поля не заполнены или заполнены некорректно!";
+   
   }
 }
 
@@ -103,7 +113,6 @@ function validation(list,fCalc) {
   let stat = true;
 for(let i =0; i < fCalc.length;i++){
   if(isNaN(fCalc[i])){
-       
         return stat = false;
       }
 }
@@ -115,4 +124,53 @@ for(let i =0; i < fCalc.length;i++){
     } 
   }
  return  stat;
+}
+//Очистка всего после закрытия результатов
+function clearAllClose(ar){
+   return ar.length =0;
+}
+
+//Зыкрытие окна результатов
+ function clickHeandlerClose(e){
+   forEventClose();
+   return false;
+} 
+
+function keyHandlerClose(e){
+  if(e.keyCode == 27 ){
+      forEventClose();
+  }
+ return false;
+}
+
+function forEventClose(){
+  windowResult.style.transform = "translateX(-150%)";
+  let collectionChildren = cont_res.children;
+    let arrayChildren = Array.prototype.slice.call(collectionChildren);
+   setTimeout(()=>{
+     clearAllClose(delRes);
+     let i = 1;
+   while(arrayChildren.length > 1){
+     arrayChildren[i].remove();
+     i++;
+   }
+   },500);
+}
+
+//анимации
+function showDelete(el,el2){
+  el.classList.remove("showH1");
+  el2.classList.add("allShow");
+}
+ 
+function show(el){
+  el.classList.add("showH1");
+}
+
+setTimeout(show, 10,windowHello); 
+ setTimeout(showDelete, 3500,windowHello,all); 
+
+
+
+
 }

@@ -159,7 +159,7 @@ function forEventClose(){
 
 //анимации
 function showDelete(el,el2){
-  el.classList.remove("showH1");
+  el.classList.add("showH2");
   el2.classList.add("allShow");
 }
  
@@ -167,8 +167,8 @@ function show(el){
   el.classList.add("showH1");
 }
 
-setTimeout(show, 10,windowHello); 
- setTimeout(showDelete, 3500,windowHello,all); 
+setTimeout(show, 10, windowHello); 
+ setTimeout(showDelete, 3000,windowHello,all); 
 
 
 

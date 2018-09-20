@@ -12,16 +12,11 @@
   body .result .close{
     left: 90%;
   }
-  body .nextWin{
-    height: 100px;
-    width: 50px;
-  
+  body .nextWin .arrow_box:after{
+    border-width: 30px;
+	margin-top: -30px;
   }
-  body .nextWin span{
-    font-size: 22px;
  
-  
-  }
 }
 @media (max-width: 600px) {
   body .form {
@@ -52,9 +47,13 @@
  
    padding: 15px;
   }
- 
+  
+  
   body .result .close{
     left: 85%;
+  }
+  body .nextWin .arrow_box{
+    left: -45px;
   }
 }
 
@@ -115,7 +114,7 @@ position: relative;
 }
 .nextWin{
   position: relative;
-  background: rgba(233, 233, 233, 0.062);
+  background:transparent;
   border:none;
   height: 150px;
   width: 75px;
@@ -123,8 +122,8 @@ position: relative;
    border-radius:  100% 0% 0% 100%/50% 0 0  50% ; 
   z-index: 99;
   opacity: 0;
-  -webkit-transition: all 0.4s ease-in-out;
-  transition: all 0.4s ease-in-out;
+  -webkit-transition: all 0.5s ease-in-out;
+  transition: all 0.5s ease-in-out;
   margin-left: -50px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -134,24 +133,47 @@ position: relative;
           align-items: center;
           -webkit-box-pack: center;
               -ms-flex-pack: center;
-                  justify-content: center;
+                  justify-content: flex-end;
   
 
   
 }
-.nextWin span{
-  display: block;
- padding-left: 15px;
-  color: #fff;
-  font-size: 24px;
-  -webkit-transition: all 0.3s;
-  transition: all 0.3s;
-  padding: 0;
-  margin: 0;
 
+.nextWin:hover .arrow_box{
+  left: -40px;
 }
-.nextWin:hover >span{
-  margin-left: 10px;
+
+
+.arrow_box {
+	position: relative;
+	background:rgb(44, 57, 82);
+  border: none;
+  transition:all 0.3s ease;
+  left: -50px;
+ 
+}
+.arrow_box:after, .arrow_box:before {
+	left: 0%;
+	top: 0%;
+	border: solid transparent;
+	content: " ";
+	height: 0;
+	width: 0;
+	position: absolute;
+	pointer-events: none;
+}
+
+.arrow_box:after {
+	border-color: rgba(136, 183, 213, 0);
+	border-left-color:rgb(44, 57, 82);
+	border-width: 30px;
+	margin-top: -30px;
+}
+.arrow_box:before {
+	border-color: rgba(194, 225, 245, 0);
+	border-left-color:rgba(253, 253, 253, 0.801);
+	border-width: 36px;
+	margin-top: -36px;
 }
 
 body {
@@ -324,3 +346,4 @@ p.viewEl {
   border: none;
   text-align: center;
 }
+

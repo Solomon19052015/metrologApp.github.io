@@ -5,13 +5,19 @@ let go = document.querySelector(".go");
 let windowResult = document.querySelector(".result");
 let cont_res = document.querySelector(".cont_res");
 let viewEl = document.querySelector(".viewEl");
-let windowHello = document.querySelector(".winHello");
+let windowHello = document.querySelector(".winHelloDiv");
 let all = document.querySelector(".all");
 let close = document.querySelector(".close");
+let nextWin = document.querySelector(".nextWin");
 go.addEventListener("click", clickHeandlerGo);
 close.addEventListener("click", clickHeandlerClose);
 window.addEventListener("keydown", keyHandlerClose);
+nextWin.addEventListener("click", nextHandlerWindow);
+//анимации
 
+setTimeout(show, 10, windowHello); 
+
+ 
 function clickHeandlerGo() {
   maxPSI = document.querySelector("#maxPSI").value;
   classPSI = Number(document.querySelector("#classPSI").value);
@@ -147,7 +153,7 @@ function forEventClose(){
   windowResult.style.transform = "translateX(-150%)";
   let collectionChildren = cont_res.children;
     let arrayChildren = Array.prototype.slice.call(collectionChildren);
-   setTimeout(()=>{
+   setTimeout(function(){
      clearAllClose(delRes);
      let i = 1;
    while(arrayChildren.length > 1){
@@ -158,22 +164,21 @@ function forEventClose(){
 }
 
 //анимации
-function showDelete(el,el2){
-  el.classList.add("showH2");
-  el2.classList.add("allShow");
-  setTimeout(()=>{
-    windowHello.remove();
-  },500)
-}
- 
+
 function show(el){
   el.classList.add("showH1");
+  setTimeout(function(){
+    nextWin.style.opacity = "1";
+  },500)
 }
 
-setTimeout(show, 10, windowHello); 
- setTimeout(showDelete, 3000,windowHello,all); 
-
-
-
+function nextHandlerWindow(){
+  windowHello.classList.add("showH2"); 
+   all.classList.add("allShow"); 
+ setTimeout(function(){
+  
+  windowHello.remove();
+},500)
+}
 
 }

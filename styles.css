@@ -53,7 +53,7 @@
     left: 85%;
   }
   body .nextWin .arrow_box{
-    left: -45px;
+    left: -35px;
   }
 }
 
@@ -114,7 +114,7 @@ position: relative;
 }
 .nextWin{
   position: relative;
-  background:transparent;
+  background: rgba(255, 255, 255, 0.068);
   border:none;
   height: 150px;
   width: 75px;
@@ -148,8 +148,9 @@ position: relative;
 	position: relative;
 	background:rgb(44, 57, 82);
   border: none;
+  -webkit-transition:all 0.3s ease;
   transition:all 0.3s ease;
-  left: -50px;
+  left: -40px;
  
 }
 .arrow_box:after, .arrow_box:before {
